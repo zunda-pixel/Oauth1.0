@@ -1,9 +1,8 @@
 import Foundation
 import CryptoKit
-import Collections
 
-let consumerKey = "FakeConcumerKey"
-let consumerSecretKey = "FakeCOnsumerKey"
+let consumerKey = "FakeConsumerKey"
+let consumerSecretKey = "FakeConsumerKey"
 let requestTokenURL = "https://api.twitter.com/oauth/request_token"
 let httpMethod = "POST"
 let oauthVersion = "1.0"
@@ -23,9 +22,9 @@ extension String {
 
 func getParameterString(parameters:[String: String]) -> String {
   let encodedValues = parameters.map {($0.encodeURL()!, $1.encodeURL()!)}
-  let dictionary = encodedValues.reduce(into: OrderedDictionary<String, String>()) { $0[$1.0] = $1.1 }
+  let dictionary = encodedValues.reduce(into: [String: String]()) { $0[$1.0] = $1.1 }
   let sortedValues = dictionary.sorted { $0.0 < $1.0 } .map { $0 }
-  let eachJoinedValues = OrderedSet(sortedValues.map { "\($0)=\($1)" })
+  let eachJoinedValues = sortedValues.map { "\($0)=\($1)" }
   let joinedValue = eachJoinedValues.joined(separator: "&")
   return joinedValue
 }
@@ -96,6 +95,3 @@ _runAsyncMain {
     print(error)
   }
 }
-
-
-
