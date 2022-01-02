@@ -1,7 +1,6 @@
 import Foundation
 import CryptoKit
 import Collections
-import OrderedCollections
 
 let consumerKey = "FakeConcumerKey"
 let consumerSecretKey = "FakeCOnsumerKey"
