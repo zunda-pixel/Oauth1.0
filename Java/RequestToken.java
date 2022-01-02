@@ -75,8 +75,10 @@ public class RequestToken {
 			.POST(BodyPublishers.noBody())
 			.build();
    	HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		
 		String oauthToken = response.body().split("&")[0].split("=")[1];
 		String authenticateURL = "https://api.twitter.com/oauth/authenticate?oauth_token=" + oauthToken;
+		
 		System.out.println(authenticateURL);
 	}
 
